@@ -44,7 +44,7 @@ about:
     openenv-core provides the core library for OpenEnv, a framework that standardizes
     how agents interact with execution environments during reinforcement-learning
     training via a Gymnasium-style step()/reset()/state() HTTP interface.
-  doc_url: https://meta-pytorch.org/OpenEnv/
+  doc_url: https://github.com/meta-pytorch/OpenEnv
   dev_url: https://github.com/meta-pytorch/OpenEnv
 
 extra:
