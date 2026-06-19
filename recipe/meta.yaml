@@ -1,0 +1,52 @@
+{% set name = "openenv-core" %}
+{% set version = "0.1.0" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.org/packages/source/o/{{ name }}/openenv_core-{{ version }}.tar.gz
+  sha256: 3a4e8bf4f2f3b7eba1c3a212e6e2dc7d980b8350015ae6c250a3ce93000f1d7c
+
+build:
+  number: 0
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
+
+requirements:
+  host:
+    - python
+    - pip
+    - setuptools >=45
+    - wheel
+  run:
+    - python
+    - requests >=2.25.0
+    - fastapi >=0.104.0
+    - uvicorn >=0.24.0
+
+test:
+  imports:
+    - openenv_core
+  commands:
+    - pip check
+  requires:
+    - pip
+
+about:
+  home: https://github.com/meta-pytorch/OpenEnv
+  license: BSD-3-Clause
+  license_family: BSD
+  # upstream sdist for 0.1.0 omits the license file; pulled from meta-pytorch/OpenEnv
+  license_file: LICENSE
+  summary: Core library for OpenEnv agentic execution environments
+  description: |
+    openenv-core provides the core library for OpenEnv, a framework that standardizes
+    how agents interact with execution environments during reinforcement-learning
+    training via a Gymnasium-style step()/reset()/state() HTTP interface.
+  doc_url: https://meta-pytorch.org/OpenEnv/
+  dev_url: https://github.com/meta-pytorch/OpenEnv
+
+extra:
+  recipe-maintainers:
+    - xkong-anaconda
